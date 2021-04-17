@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_075613) do
+ActiveRecord::Schema.define(version: 2021_04_17_204944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.integer "preptime"
+    t.string "ingredients", array: true
+    t.string "instructions"
+    t.index ["ingredients"], name: "index_recipes_on_ingredients", using: :gin
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
