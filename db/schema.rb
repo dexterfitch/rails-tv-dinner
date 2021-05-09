@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_05_02_071554) do
     t.string "name"
     t.text "description"
     t.integer "film_id"
-    t.string "recipe_ids"
+    t.string "recipe_ids", default: [], array: true
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

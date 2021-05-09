@@ -4,7 +4,7 @@ class CreateTvdinners < ActiveRecord::Migration[6.0]
       t.string :name
       t.text :description
       t.integer :film_id
-      t.string :recipe_ids
+      t.string :recipe_ids, array: true, default: []
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

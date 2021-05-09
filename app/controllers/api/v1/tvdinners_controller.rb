@@ -15,8 +15,22 @@ module Api
         end 
       end
 
+      def create
+        @tvdinner = Tvdinner.new(tvdinner_params)
+        if @tvdinner.save
+          render json: @tvdinner, status: :created
+        else
+          render json: @tvdinner.errors, status: :unprocessable_entity
+        end
+      end
 
-    
+      private
+
+      def tvdinner_params
+        binding.pry
+        params.require(:tvdinner).permit(:name, :description, :film_id, :recipe_ids, :user_id)
+      end
+
     end
   end
 end
