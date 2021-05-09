@@ -27,8 +27,13 @@ module Api
       private
 
       def tvdinner_params
-        binding.pry
-        params.require(:tvdinner).permit(:name, :description, :film_id, :recipe_ids, :user_id)
+        params.require(:tvdinner).permit(
+          :name, 
+          :description, 
+          :film_id, 
+          :user_id, 
+          :recipe_ids => []
+        )
       end
 
     end
