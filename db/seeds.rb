@@ -1,5 +1,7 @@
-user = User.first || User.create(email: 'test@test.com', password: 'unicornfluff')
-tvdinners = [
+user1 = User.create(email: 'test@test.com', password: 'unicornfluff')
+user2 = User.create(email: 'demo@demo.com', password: 'peepbunnies')
+
+tvdinners1 = [
   {
     name: "Cannibal Chic",
     description: "A fun Mediterrean-inspired mealplan that pays homage to film's most famous cannibal.",
@@ -14,6 +16,25 @@ tvdinners = [
   },
 ]
 
-tvdinners.each do |dinner|
-  user.tvdinners.create(dinner)
+tvdinners2 = [
+  {
+    name: "Medieval Times",
+    description: "Giant turkey legs, baked potatoes, and plenty of red sauce.",
+    film_id: 1399,
+    recipe_ids: ["1b5e5a106c73e7741614122a91d32710", "f3129be57336d0e35971e96767bab250", "77fcfc8ce6cf5aca42afe52e22497784"]
+  },
+  {
+    name: "Apocalypse Bao",
+    description: "Ramen, dumplings, and revenants.",
+    film_id: 78,
+    recipe_ids: ["72a3b66afe35edd2f162d02d991d0645", "b67960906d055115e491dc4070ed6b12", "ce75396c50801f139b2238ffe63de1c5"]
+  },
+]
+
+tvdinners1.each do |tvdinner|
+  user1.tvdinners.create(tvdinner)
+end
+
+tvdinners2.each do |tvdinner|
+  user2.tvdinners.create(tvdinner)
 end
